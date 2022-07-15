@@ -15,4 +15,24 @@ public class BookApi {
     public Book getBookById(@PathVariable int id) {
         return new Book(id, "Learning Java", "10th International", 2020, 1200);
     }
+
+    @PostMapping
+    public Book createBook(@RequestBody Book book) {
+        return book;
+    }
+
+    @PutMapping("{id}")
+    public Book updateBook(@RequestBody Book book, @PathVariable int id) {
+        return book;
+    }
+
+    @PatchMapping("{id}")
+    public Book updateBook1(@RequestBody Book book, @PathVariable int id) {
+        return book;
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable int id) {
+
+    }
 }
