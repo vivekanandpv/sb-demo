@@ -2,6 +2,7 @@ package in.athenaeum.sbdemo.apis;
 
 import in.athenaeum.sbdemo.models.Book;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class BookApi {
     @GetMapping
     public Book getBook() {
-        return new Book("Learning Java", "10th International", 2020, 1200);
+        return new Book(0, "Learning Java", "10th International", 2020, 1200);
+    }
+
+    @GetMapping("{id}")
+    public Book getBookById(@PathVariable int id) {
+        return new Book(id, "Learning Java", "10th International", 2020, 1200);
     }
 }
