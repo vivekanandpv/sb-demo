@@ -1,14 +1,23 @@
 package in.athenaeum.sbdemo.apis;
 
 import in.athenaeum.sbdemo.models.Book;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("api/v1/books")
 public class BookApi {
+    private final Logger logger;
+
+    public BookApi() {
+        logger = LoggerFactory.getLogger(this.getClass());
+    }
+
     @GetMapping
     public ResponseEntity<Book> getBook(@RequestParam(required = false) String title) {
+        logger.info("getBook: invoked with GET method and the title: {}", title);
         return ResponseEntity.ok(new Book(0, title, "10th International", 2021, 1200));
     }
 
